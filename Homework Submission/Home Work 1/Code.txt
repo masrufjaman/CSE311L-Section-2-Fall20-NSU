@@ -1,70 +1,64 @@
-	< ---------- Insert Values on Departments Table ---------- >
+-- Delete all tables
+DROP TABLE employees;
+DROP TABLE departments;
+DROP TABLE locations;
 
-INSERT INTO departments
-VALUES 
-(20, 'Marketing', 201, 1800),
-(50, 'Shipping', 124, 1500),
-(60, 'IT', 103, 1400),
-(80, 'Sales', 149, 2500),
-(90, 'Executive', 100, 1700),
-(110, 'Accounting', 205, 1700);
-INSERT INTO departments(Department_id, Department_Name, Location_id) VALUES(190, 'Contracting', 1700);	//Manager_id - NULL
-
-
-
-
-
-	< ---------- Creating Employees Table ---------- >
-
-CREATE TABLE Employees(
-    Employee_Id int(6) NOT NULL PRIMARY KEY,
-    First_Name varchar(20),
-    Last_Name varchar(25) NOT NULL,
-    Email varchar(25) NOT NULL,
-    Phone_Number varchar(15),
-    Hire_Data date NOT NULL,
-    Job_Id varchar(10) NOT NULL,
-    Salary int(8),
-    Commission_pct int(2),
-    Manager_id int(6),
-    Department_Id int(4)
+-- Creating Employees Table
+CREATE TABLE employees (
+    Employee_Id INT(6) NOT NULL PRIMARY KEY,
+    First_Name VARCHAR(20),
+    Last_Name VARCHAR(25) NOT NULL,
+    Email VARCHAR(25) NOT NULL,
+    Phone_Number VARCHAR(15),
+    Hire_Date DATE NOT NULL,
+    Job_Id VARCHAR(10) NOT NULL,
+    Salary INT(8),
+    Commission_pct FLOAT,
+    Manager_id INT(6),
+    Department_Id INT(4)
 );
 
+-- Insert Values on Employees Table
+INSERT INTO employees VALUES (100, 'Steven', 'King', 'SKING', '515.123.4567', '2006-06-17', 'AD_PRESS', 24000, '', '', 90);
+INSERT INTO employees VALUES (101, 'Neena', 'Kochar', 'NKOCHAR', '515.123.4568', '2008-09-21', 'AD_VP', 17000, '', 100, 90);
+INSERT INTO employees VALUES (102, 'Lex', 'De Haan', 'DEHAAN', '515.123.4569', '2009-01-13', 'AD_VP', 17000, '', 100, 90);
+INSERT INTO employees VALUES (103, 'Alexander', 'Hunold', 'AHUNOLD', '590.423.4567', '2008-01-03', 'IT_PROG', 9000, '', 102, 60);
+INSERT INTO employees VALUES (104, 'Bruce', 'Ernst', 'BERNST', '590.423.4568', '2009-05-21', 'IT_PROG', 6000, '', 103, 60);
+INSERT INTO employees VALUES (107, 'Diana', 'Lorentz', 'DLORENTZ', '590.423.5567', '2008-02-07', 'IT_PROG', 4200, '', 103, 60);
+INSERT INTO employees VALUES (124, 'Kevin', 'Mourgous', 'KMORGOS', '650.123.5234', '2012-11-16', 'ST_MAN', 5800, '', 100, 50);
+INSERT INTO employees VALUES (141, 'Treena', 'Rajs', 'RRAJS', '650.121.5234', '2004-10-17', 'ST_CLERK', 3500, '', 124, 50);
+INSERT INTO employees VALUES (142, 'Curtis', 'Davies', 'CDAVIES', '121.123.5234', '2007-01-29', 'ST_CLERK', 3100, '', 124, 50);
+INSERT INTO employees VALUES (143, 'Randall', 'Matos', 'RMATOS', '121.123.5234', '2008-03-15', 'ST_CLERK', 2600, '', 124, 50);
+INSERT INTO employees VALUES (144, 'Peter', 'Vargas', 'PVARGAS', '121.123.5234', '2008-07-09', 'ST_CLERK', 2500, '', 124, 50);
+INSERT INTO employees VALUES (149, 'Eleni', 'Zlotkey', 'EZLOTKEY', '44.1344.429018', '2014-01-29', 'SA_MAN', 10500, 0.2, 100, 80);
+INSERT INTO employees VALUES (174, 'Ellen', 'Abel', 'EABEL', '44.1644.429017', '2004-05-11', 'SA_REP', 11000, 0.3, 149, 80);
+INSERT INTO employees VALUES (176, 'Jnathon', 'Taylor', 'JTAILOR', '44.1644.429021', '2008-03-24', 'SA_MAN', 8600, 0.2, 149, 80);
+INSERT INTO employees VALUES (178, 'Kimberely', 'Grant', 'KGRANT', '44.1644.429023', '2009-05-24', 'SA_MAN', 7000, 0.15, 149, '');
+INSERT INTO employees VALUES (200, 'Jennifer', 'Whalem', 'JWHALEN', '515.123.4444', '2003-09-17', 'AD_ASST', 4400, '', 101, 10);
+INSERT INTO employees VALUES (201, 'Michael', 'Hartstein', 'MHARSTEIN', '515.123.5555', '2008-02-17', 'MK_MAN', 13000, '', 100, 20);
+INSERT INTO employees VALUES (202, 'Pat', 'Fay', 'PFAY', '603.123.6666', '2010-08-17', 'MK_REP', 6000, '', 201, 20);
+INSERT INTO employees VALUES (205, 'Shelley', 'Higgins', 'SHIGGINS', '515.123.8050', '2007-06-07', 'AC_MGR', 12000, '', 101, 110);
+INSERT INTO employees VALUES (206, 'William', 'Gietz', 'WGIETZ', '515.123.8181', '2007-06-07', 'AC_ACCOUNT', 8300, '', 205, 110);
 
+-- Creating Departments Table
+CREATE TABLE departments(
+    Department_id INT(4) NOT NULL PRIMARY KEY,
+    Department_Name VARCHAR(30) NOT NULL,
+    Manager_id INT(6),
+    Location_id INT(4)
+);
 
+-- Insert Values on Departments Table
+INSERT INTO departments VALUES (10, 'Administration', 200, 1700);
+INSERT INTO departments VALUES (20, 'Marketing', 201, 1800);
+INSERT INTO departments VALUES (50, 'Shipping', 124, 1500);
+INSERT INTO departments VALUES (60, 'IT', 103, 1400);
+INSERT INTO departments VALUES (80, 'Sales', 149, 2500);
+INSERT INTO departments VALUES (90, 'Executive', 100, 1700);
+INSERT INTO departments VALUES (110, 'Accounting', 205, 1700);
+INSERT INTO departments VALUES(190, 'Contracting', '',1700);
 
-
-	< ---------- Insert Values on Employees Table ---------- >
-
-INSERT INTO employees
-VALUES
-(100, 'Steven', 'King', 'SKING', '515.123.4567', '1987-06-17', 'AD_PRES', 24000, '', '', 90),
-(101, 'Neena', 'Kocchar', 'NKOCCHAR', '515.123.4568', '1989-09-21', 'AD_VP', 17000, '', 100, 90),
-(102, 'Lex', 'De haan', 'LDEHAAN', '515.123.4569', '1993-01-13', 'AD_VP', 17000, '', 100, 90),
-(103, 'Alexander', 'Hunold', 'AHUNOLD', '590.423.4567', '1990-01-03', 'OT_PROG', 9000, '', 102, 60),
-(104, 'Bruce', 'Ernst', 'BERNST', '590.423.4568', '1991-05-21', 'IT_PROG', 6000, '', 103, 60),
-(107, 'Diana', 'Lorentz', 'DLORENTZ', '590.423.5567', '1999-02-07', 'IT_PROG', 4200, '', 103, 60),
-(124, 'Kevin', 'Mourgous', 'KMOURGOUS', '650.123.5234', '1999-11-16', 'ST_MAN', 5800, '', 100, 50),
-(141, 'Trenna', 'Rajs', 'TRAJS', '650.121.8009', '1995-10-17', 'ST_CLERK', 3500, '', 124, 50),
-(142, 'Curtis', 'Davies', 'CDAVIES', '650.121.2994', '1997-01-29', 'ST_CLERK', 3100, '', 124, 50),
-(143, 'Randall', 'Matos', 'RMATOS', '650.121.2874', '1998-03-15', 'ST_CLERK', 2600, '', 124, 50),
-(144, 'Peter', 'Vargas', 'PVARGAS', '650.121.2004', '1998-07-09', 'ST_CLERK', 2500, '', 124, 50),
-(149, 'Eleni', 'Zlotkey', 'EZLOTKEY', '011.44.1344.429018', '2000-01-29', 'SA_MAN', 10500, .2, 100, 80),
-(174, 'Ellen', 'Abel', 'EABEL', '011.44.1644.429267', '1996-05-11', 'SA_REP', 11000, .3, 149, 80),
-(176, 'Jonathon', 'Taylor', 'JTAYLOR', '011.44.1644.429265', '1998-03-24', 'SA_REP', 8600, .2, 149, 80),
-(178, 'Kimberely', 'Grant', 'KGRANT', '011.44.1644.429263', '1999-05-24', 'SA_REP', 7000, .15, 149, ''),
-(200, 'Jennifer', 'Whalen', 'JWHALEN', '515.123.4444', '1987-09-17', 'AD_ASST', 4400, '', 101, 10),
-(201, 'Michael', 'Hartstein', 'MHARTSTEIN', '515.123.5555', '1996-02-17', 'MK_MAN', 13000, '', 100, 20),
-(202, 'Pat', 'Fay', 'PFAY', '603.123.6666', '1997-08-17', 'MK_REP', 6000, '', 201, 20),
-(205, 'Shelley', 'Higgins', 'SHIGGINS', '515.123.8080', '1994-06-07', 'AC_MGR', 12000, '', 101, 110),
-(206, 'William', 'Gietz', 'WGIETZ', '515.123.8181', '1994-06-07', 'AC_ACCOUNT', 8300, '', 205, 110);
-
-
-
-
-
-	< ---------- Creating Locations Table ---------- >
-
+-- Creating Locations Table
 CREATE TABLE Locations(
     Location_id int(4) NOT NULL PRIMARY KEY,
     Street_Address varchar(40),
@@ -74,16 +68,9 @@ CREATE TABLE Locations(
     Country_ID varchar(2)
 );
 
-
-
-
-
-	< ---------- Insert Values on Locations Table ---------- >
-
-INSERT INTO locations
-VALUES
-(1400, '2014 Jabberwocky Rd', '26192', 'Southlake', 'Texas', 'US'),
-(1500, '2011 Interiors Blvd', '99236', 'South San Francisco', 'California', 'US'),
-(1700, '2004 Charade Rd', '98199', 'Seattle', 'Washington', 'US'),
-(1800, '460 Bloor ST. W.', 'ON M5S 1X8', 'Toronto', 'Ontario', 'CA'),
-(2500, 'Magdalen Centre-The Oxford Sc. Park', 'OX9 9ZB', 'Oxford', 'Oxford', 'UK');
+-- Insert Values on Locations Table
+INSERT INTO locations VALUES (1400, '2014 Jabberwocky Rd', '26192', 'Southlake', 'Texas', 'US');
+INSERT INTO locations VALUES (1500, '2011 Interiors Blvd', '99236', 'South San Francisco', 'California', 'US');
+INSERT INTO locations VALUES (1700, '2004 Charade Rd', '98199', 'Seattle', 'Washington', 'US');
+INSERT INTO locations VALUES (1800, '460 Bloor ST. W.', 'ON M5S 1X8', 'Toronto', 'Ontario', 'CA');
+INSERT INTO locations VALUES (2500, 'Magdalen Centre-The Oxford Sc. Park', 'OX9 9ZB', 'Oxford', 'Oxford', 'UK');
