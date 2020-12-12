@@ -14,3 +14,11 @@ FROM employees
 WHERE Salary > (SELECT AVG(Salary)
                FROM employees)
 ORDER BY Salary
+
+
+<!-- Activity #1_3.2 -->
+SELECT Last_Name, Salary
+FROM employees
+WHERE Manager_id = (SELECT Employee_Id
+                   FROM employees
+                   WHERE Last_Name = 'King')
