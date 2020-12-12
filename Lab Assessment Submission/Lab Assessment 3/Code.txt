@@ -22,3 +22,13 @@ FROM employees
 WHERE Manager_id = (SELECT Employee_Id
                    FROM employees
                    WHERE Last_Name = 'King')
+
+
+<!-- Activity #2_3.2 -->
+SELECT Employee_Id,Last_Name, Salary
+FROM employees
+WHERE Department_Id IN (SELECT Department_Id
+                       FROM employees
+                       WHERE Last_Name LIKE '%u%')
+AND Salary > (SELECT AVG(Salary)
+             FROM employees)                      
