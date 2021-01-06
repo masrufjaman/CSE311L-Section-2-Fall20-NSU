@@ -1,0 +1,21 @@
+Q1.1
+SELECT MAX(S.age), S.sname
+FROM student S, department D
+WHERE (S.major = 'History' AND D.fname = 'Ivana Teach')
+
+Q1.2
+SELECT S.sname
+FROM student S
+WHERE S.snum IN(SELECT C1.snum
+               FROM course C1, course C2, class cl1, class cl2 WHERE C1.snum = C2.snum AND C1.cname=C2.cname AND C1.cname=cl1.name AND C2.cname= cl2.name AND cl1.meets_at=cl2.meets_at)
+
+Q1.3
+SELECT S.sname
+FROM student S
+WHERE S.snum IN(SELECT C1.snum
+               FROM course C1 GROUP BY C1.snum HAVING COUNT(*)>=ALL(SELECT COUNT(*)FROM course C2 GROUP BY C2.snum))
+
+Q1.4
+SELECT S.sname
+FROM student S WHERE S.snum NOT IN(SELECT C.snum
+                                  FROM course C)
